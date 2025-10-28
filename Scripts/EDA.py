@@ -16,10 +16,24 @@ def plot_demographics(df):
         plt.title(f'Churn by {col}')
         plt.show()
 
+# def plot_tenure_churn(df):
+#   #Analyze tenure distribution and churn.
+#     sns.histplot(data=df, x='tenure', hue='Churn', bins=30, kde=True)
+#     plt.title('Tenure Distribution by Churn')
+#     plt.show()
+
 def plot_tenure_churn(df):
-  #Analyze tenure distribution and churn.
-    sns.histplot(data=df, x='tenure', hue='Churn', bins=30, kde=True)
-    plt.title('Tenure Distribution by Churn')
+    """
+    Plots a histogram showing tenure distribution separated by churn status.
+    """
+    plt.figure(figsize=(10, 6))
+    sns.histplot(data=df, x='tenure', hue='Churn', bins=30, kde=False,
+                 palette={'Yes': 'red', 'No': 'green'})
+    plt.title('Customer Tenure Distribution by Churn Status')
+    plt.xlabel('Tenure (Months)')
+    plt.ylabel('Number of Customers')
+    plt.legend(title='Churn')
+    plt.tight_layout()
     plt.show()
 
 def plot_contract_payment(df):
